@@ -10,9 +10,10 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 
 public class BuscaValoresMoedas {
-    public MoedasExchangeAPI buscaTaxasConversaoExchangeAPI() throws IOException, InterruptedException {
+    public MoedasExchangeAPI buscaTaxasConversaoExchangeAPI(String siglaMoedaBase) throws IOException, InterruptedException, NullPointerException {
 
-        URI apiURL = URI.create("https://v6.exchangerate-api.com/v6/latest/USD");
+        // concatenando a sigla da moeda base de conversão na URL da API
+        URI apiURL = URI.create("https://v6.exchangerate-api.com/v6/latest/" + siglaMoedaBase);
 
         // Criando um cliente HTTP através de um construtor (builder)
         HttpClient client = HttpClient.newBuilder().build();
@@ -21,7 +22,7 @@ public class BuscaValoresMoedas {
         HttpRequest req = HttpRequest.newBuilder()
                 .uri(apiURL)
                 .header("Accept", "*/*")
-                .header("Authorization", "Bearer")
+                .header("Authorization", "Bearer API_KEY")
                 .build();
 
         // Criando a response para capturar a resposta da requisição
