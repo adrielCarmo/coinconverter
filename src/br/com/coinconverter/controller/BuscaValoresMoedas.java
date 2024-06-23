@@ -21,7 +21,7 @@ public class BuscaValoresMoedas {
         HttpRequest req = HttpRequest.newBuilder()
                 .uri(apiURL)
                 .header("Accept", "*/*")
-                .header("Authorization", "Bearer b9a009c286977e23063c3201")
+                .header("Authorization", "Bearer")
                 .build();
 
         // Criando a response para capturar a resposta da requisição
